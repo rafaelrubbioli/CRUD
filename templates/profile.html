@@ -1,0 +1,12 @@
+<html>
+  <h1> {{user['name']}} </h1>
+  Telefone : {{user['phone']}} <br/>
+  E-mail : {{user['email']}} <br/>
+  Endereco : {{user['address']}} <br/>
+  TAGS : <br/>
+  {% for tag in user['tags'] %}
+    {{tag}} <br/>
+  {% endfor %}
+  <a href="/edit/{{id}}">Editar</a> <br/>
+  <a href="/">Voltar</a>
+</html>

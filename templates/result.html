@@ -1,0 +1,11 @@
+<html>
+  <ul>
+    {% for key in result %}
+      <h1> Nome : {{users.users[key]['name']}} </h1>
+      <a href='/user/{{key}}'> {{key}} </a>
+      <h3> Telefone : {{users.users[key]['phone']}} </h1>
+      <h3> E-mail : {{users.users[key]['email']}} </h1>
+    {% endfor %}
+  </ul>
+  <a href="/">Voltar</a>
+</html>
