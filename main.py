@@ -3,18 +3,21 @@ from User import *
 
 app = Flask(__name__)
 db = User()
+
+## TESTES ##
 db.add_user('rafael', 'rafael@123', 12341234, 'rua avenida', ['feliz', 'divertido'])
-db.add_user('fernanda', 'fernanda@123', 12341234, 'rua avenida')
+db.add_user('fernanda', 'fernanda@123', 12341234, 'rua avenida', ['feliz'])
 db.add_user('marquito', 'marquito@123', 12341234, 'rua avenida')
 db.add_user('rafael rubbioli', 'rafaelr@123', 12341235, 'rua avenida')
 db.add_user('rafael da silva', 'rafaels@123', 12341236, 'rua avenida')
-
+############
 
 # pagina inicial
 @app.route('/')
 def index():
 	return render_template('index.html', users = db, id = 0)
 
+# pagina de adicionar usuarios
 @app.route('/create/', methods = ['POST', 'GET'])
 def add():
 	if request.method == 'POST':
@@ -24,6 +27,13 @@ def add():
 	else:
 		return render_template('create.html')
 
+# pagina de apagar usuarios
+@app.route('/delete/<int:id>')
+def delete(id):
+	db.del_user(id)
+	return render_template('delete.html')
+
+# pagina de editar o perfil 
 @app.route('/edit/<int:id>')
 def edit(id):
 	return render_template('edit.html', id = id)
