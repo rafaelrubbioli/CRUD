@@ -33,7 +33,7 @@ def delete(id):
 	db.del_user(id)
 	return render_template('delete.html')
 
-# pagina de editar o perfil 
+# pagina de editar o perfil
 @app.route('/edit/<int:id>')
 def edit(id):
 	return render_template('edit.html', id = id)
